@@ -202,6 +202,7 @@ Rails.application.routes.draw do
     get "purchase", on: :collection, to: "credits#new"
   end
   resources :buffer_updates, only: [:create]
+  # this route is applicable to our 'collections' track--currently only index and update
   resources :reading_list_items, only: [:update]
   resources :poll_votes, only: %i[show create]
   resources :poll_skips, only: [:create]
@@ -362,6 +363,7 @@ Rails.application.routes.draw do
 
   get "/pod", to: "podcast_episodes#index"
   get "/podcasts", to: redirect("pod")
+  # will be using this readinglist route for 'collections'
   get "/readinglist" => "reading_list_items#index"
   get "/readinglist/:view" => "reading_list_items#index", :constraints => { view: /archive/ }
 
