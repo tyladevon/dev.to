@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "Collection", type: :feature do
-  before :each do
+  before do
     user = create(:user)
     @collection = create(:user_collection, user_id: user.id)
     @article_1 = create(:article)
@@ -17,17 +17,17 @@ RSpec.describe "Collection", type: :feature do
     it "returns colection page" do
       visit "/collections"
       expect(page).to have_content("Collections")
-      expect(page).to have_content("#{@collection.title}")
+      expect(page).to have_content(@collection.title.to_s)
     end
 
     xit "visit collection show page" do
       visit "/collections"
-      click_on "#{@collection.title}"
-      expect(current_path).to eq("/collections/#{@collection.id}")
-      expect(page).to have_content("#{@collection.title}")
-      expect(page).to have_content("#{@article_1.title}")
-      expect(page).to have_content("#{@article_2.title}")
-      expect(page).to have_content("#{@article_3.title}")
+      click_on @collection.title.to_s
+      expect(page).to have_current_path("/collections/#{@collection.id}", ignore_query: true)
+      expect(page).to have_content(@collection.title.to_s)
+      expect(page).to have_content(@article_1.title.to_s)
+      expect(page).to have_content(@article_2.title.to_s)
+      expect(page).to have_content(@article_3.title.to_s)
     end
   end
 end
