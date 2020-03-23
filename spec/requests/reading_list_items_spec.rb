@@ -18,6 +18,10 @@ RSpec.describe "ReadingListItems", type: :request do
     end
   end
 
+  # lines 25-30 of reading_list_items is applicable to our 'collections' track
+  # will be altering the describe block based on the changed functionality. Will also
+  # be adding more specs for additional 'collections' functionality
+
   describe "PUT reading_list_items/:id" do
     it "returns archives item if no param" do
       put "/reading_list_items/#{reaction.id}"

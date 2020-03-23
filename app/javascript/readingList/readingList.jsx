@@ -122,6 +122,13 @@ export class ReadingList extends Component {
     return statusView === STATUS_VIEW_VALID;
   }
 
+  // ******************************************************
+  // ******************************************************
+  // the function below determins if a user has saved data
+  // and provides info if not
+  // ******************************************************
+  // ******************************************************
+
   renderEmptyItems() {
     const { itemsLoaded, selectedTags, query } = this.state;
 
@@ -149,6 +156,13 @@ export class ReadingList extends Component {
       );
     }
 
+    // ******************************************************
+    // ******************************************************
+    // the return below inserts a message telling the user
+    // they dont have any saved articles at this time
+    // ******************************************************
+    // ******************************************************
+
     return (
       <div className="items-empty">
         <FilterText
@@ -173,6 +187,13 @@ export class ReadingList extends Component {
 
     const isStatusViewValid = this.statusViewValid();
 
+    // ******************************************************
+    // ******************************************************
+    // the return below inserts the ItemListItem component
+    // which is the articles a user has saved to their reading list
+    // ******************************************************
+    // ******************************************************
+
     const archiveButtonLabel = isStatusViewValid ? 'archive' : 'unarchive';
     const itemsToRender = items.map(item => {
       return (
@@ -192,6 +213,16 @@ export class ReadingList extends Component {
     ) : (
       ''
     );
+
+    // ******************************************************
+    // ******************************************************
+    // this renders the left column of info when the user
+    // selects the reading list button
+    // will need to add collections heading and component to
+    // create new collection in the return below
+    // ******************************************************
+    // ******************************************************
+
     return (
       <div className="home item-list">
         <div className="side-bar">

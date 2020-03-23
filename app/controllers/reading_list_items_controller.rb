@@ -1,3 +1,9 @@
+# will be using this controller for 'collections' track
+# this action correlates with the ReadingListItemsIndex View and we will need
+# to update it based on the changes in functionality from ReadingList to Collections
+# with the functionality of holding many different lists (collections) rather than just
+# the one
+
 class ReadingListItemsController < ApplicationController
   def index
     @reading_list_items_index = true
