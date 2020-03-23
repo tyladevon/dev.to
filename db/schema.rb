@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_27_214321) do
+ActiveRecord::Schema.define(version: 2020_03_23_192705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,15 @@ ActiveRecord::Schema.define(version: 2020_02_27_214321) do
     t.integer "user_id"
     t.index ["secret"], name: "index_api_secrets_on_secret", unique: true
     t.index ["user_id"], name: "index_api_secrets_on_user_id"
+  end
+
+  create_table "article_collections", force: :cascade do |t|
+    t.bigint "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_collection_id"
+    t.index ["article_id"], name: "index_article_collections_on_article_id"
+    t.index ["user_collection_id"], name: "index_article_collections_on_user_collection_id"
   end
 
   create_table "articles", id: :serial, force: :cascade do |t|
@@ -1019,6 +1028,14 @@ ActiveRecord::Schema.define(version: 2020_02_27_214321) do
     t.index ["blocked_id", "blocker_id"], name: "index_user_blocks_on_blocked_id_and_blocker_id", unique: true
   end
 
+  create_table "user_collections", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "title"
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_user_collections_on_user_id"
+  end
+
   create_table "user_counters", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.jsonb "data", default: {}, null: false
@@ -1098,7 +1115,7 @@ ActiveRecord::Schema.define(version: 2020_02_27_214321) do
     t.datetime "last_article_at", default: "2017-01-01 05:00:00"
     t.datetime "last_comment_at", default: "2017-01-01 05:00:00"
     t.datetime "last_followed_at"
-    t.datetime "last_moderation_notification", default: "2017-01-01 05:00:00"
+    t.datetime "last_moderation_notification", default: "2017-01-01 07:00:00"
     t.datetime "last_notification_activity"
     t.string "last_onboarding_page"
     t.datetime "last_sign_in_at"
@@ -1209,6 +1226,8 @@ ActiveRecord::Schema.define(version: 2020_02_27_214321) do
   end
 
   add_foreign_key "api_secrets", "users", on_delete: :cascade
+  add_foreign_key "article_collections", "articles"
+  add_foreign_key "article_collections", "user_collections"
   add_foreign_key "audit_logs", "users"
   add_foreign_key "badge_achievements", "badges"
   add_foreign_key "badge_achievements", "users"
@@ -1225,6 +1244,7 @@ ActiveRecord::Schema.define(version: 2020_02_27_214321) do
   add_foreign_key "oauth_access_tokens", "users", column: "resource_owner_id"
   add_foreign_key "page_views", "articles", on_delete: :cascade
   add_foreign_key "podcasts", "users", column: "creator_id"
+  add_foreign_key "pro_memberships", "users"
   add_foreign_key "sponsorships", "organizations"
   add_foreign_key "sponsorships", "users"
   add_foreign_key "tag_adjustments", "articles", on_delete: :cascade
@@ -1232,6 +1252,7 @@ ActiveRecord::Schema.define(version: 2020_02_27_214321) do
   add_foreign_key "tag_adjustments", "users", on_delete: :cascade
   add_foreign_key "user_blocks", "users", column: "blocked_id"
   add_foreign_key "user_blocks", "users", column: "blocker_id"
+  add_foreign_key "user_collections", "users"
   add_foreign_key "user_counters", "users", on_delete: :cascade
   add_foreign_key "users_roles", "users", on_delete: :cascade
   add_foreign_key "webhook_endpoints", "oauth_applications"
