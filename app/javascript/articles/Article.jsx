@@ -122,6 +122,7 @@ export const Article = ({
         isBookmarked={isBookmarked}
         onClick={bookmarkClick}
       />
+      {/* add button goes here */}
     </div>
   );
 };
