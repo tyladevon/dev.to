@@ -20,7 +20,7 @@ RSpec.describe "Collection", type: :feature do
       expect(page).to have_content(@collection.title.to_s)
     end
 
-    xit "visit collection show page" do
+    it "visit collection show page" do
       visit "/collections"
       click_on @collection.title.to_s
       expect(page).to have_current_path("/collections/#{@collection.id}", ignore_query: true)
