@@ -180,7 +180,7 @@ Rails.application.routes.draw do
   resources :downloads, only: [:index]
   resources :stripe_active_cards, only: %i[create update destroy]
   resources :live_articles, only: [:index]
-  resources :collections, only: [:index, :create]
+  resources :collections, only: [:index, :create, :show]
   resources :github_repos, only: %i[index create update] do
     collection do
       post "/update_or_create", to: "github_repos#update_or_create"
