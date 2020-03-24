@@ -4,6 +4,10 @@ class CollectionsController < ApplicationController
   def index
     @collections = UserCollection.where(user_id: session_current_user_id)
   end
+  
+  def show
+    @collection = UserCollection.find(params[:id])
+  end
 
   def create
     collection = UserCollection.create(title: params[:title], user_id: session_current_user_id)
@@ -13,9 +17,5 @@ class CollectionsController < ApplicationController
       flash[:error] = collection.errors.full_messages.to_sentence
       redirect_to "/collections"
     end
-  end
-
-  def show
-    @collection = UserCollection.find(params[:id])
   end
 end
