@@ -14,4 +14,8 @@ class CollectionsController < ApplicationController
       redirect_to "/collections"
     end
   end
+
+  def show
+    @collection = UserCollection.find(params[:id])
+  end
 end
