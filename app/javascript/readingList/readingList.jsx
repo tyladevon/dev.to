@@ -1,6 +1,10 @@
+
 import { h, Component } from 'preact';
 import { PropTypes } from 'preact-compat';
 import debounce from 'lodash.debounce';
+import NewCollectionMenu from './newCollectionComponent';
+// import SaveToCollection from './saveToCollectionComponent';
+import { returnCollectionTitles } from './newCollectionComponent';
 
 import {
   defaultState,
@@ -36,7 +40,11 @@ export class ReadingList extends Component {
     super(props);
 
     const { availableTags, statusView } = this.props;
-    this.state = defaultState({ availableTags, archiving: false, statusView });
+    this.state = defaultState({
+      collectionHeadings: ['All Articles'],
+      availableTags,
+      archiving: false,
+      statusView });
 
     // bind and initialize all shared functions
     this.onSearchBoxType = debounce(onSearchBoxType.bind(this), 300, {
@@ -192,7 +200,36 @@ export class ReadingList extends Component {
     ) : (
       ''
     );
+
+    const buildCollectionHeadings = () => {
+      let headings = ['test heading']
+      //
+      // if (!returnCollectionTitles()) {
+      //   headings = returnCollectionTitles()
+      // }
+
+      let collectionHeadings = headings.map(heading => {
+        return <p className="collection-headings">{heading}</p>
+      })
+      return collectionHeadings;
+    }
+
+    const createNewCollection = () => {
+      let titles = returnCollectionTitles()
+      this.setState({collectionHeadings: [...this.state.collectionHeadings, titles]})
+      console.log(this.state.collectionHeadings);
+      // console.log(returnCollectionTitles())
+    }
+
+    // WILL NEED TO ADD 'MY COLLECTIONS' HEADING TO RENDER BELOW
+    // ALL ARTICLES WILL GO UNDER THIS HEADING
+    // ADDITIONAL COLLECTION HEADINGS WILL FOLLOW
+
+    // <NewCollectionMenu />
+    // <SaveToCollection />
+
     return (
+
       <div className="home item-list">
         <div className="side-bar">
           <div className="widget filters">
@@ -201,7 +238,13 @@ export class ReadingList extends Component {
               placeHolder="search your list"
             />
             <div className="filters-header">
-              <h4 className="filters-header-text">my tags</h4>
+              <h4 className="filters-header-text">My Collections</h4>
+
+              {this.state.collectionHeadings}
+              <NewCollectionMenu />
+
+              <button onClick={createNewCollection}>LOG HEADINGS</button>
+
               {Boolean(selectedTags.length) && (
                 <a
                   className="filters-header-action"
