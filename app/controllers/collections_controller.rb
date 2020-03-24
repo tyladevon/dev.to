@@ -1,5 +1,6 @@
 class CollectionsController < ApplicationController
-
+  skip_forgery_protection
+  
   def index
     @collections = UserCollection.where(user_id: session_current_user_id)
   end
@@ -13,5 +14,4 @@ class CollectionsController < ApplicationController
       redirect_to "/collections"
     end
   end
-
 end

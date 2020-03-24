@@ -20,27 +20,21 @@
 <div class="home">
   <h1>Collections</h1>
 
-     <form class='new-collection-container'>
-       <p class='new-collection-heading'>Create a New Collection</p>
-       <input
-         class='new-collection-input'
-         type='text'
-         placeholder='name of collection...'
-       />
-       <button class='new-collection-button'>save</button>
-     </form>
+  <form action="/collections" method="POST" class='new-collection-container' >
+    <label for="title">Create Collection</label><br>
+    <input type="text" id="title" name="title" class='new-collection-input' placeholder='name of collection...'> <br>
+    <input type="submit" value="Save" class='new-collection-button'>
+  </form> 
+
+  <br>
+  <br>
 
   <% @collections.each do |collection| %>
     <a class='item' href="/collections/<%= collection.id %>">
       <div class="item-title">
-      <%= collection.title  %>
+        <ul> <%= collection.title  %> </ul>
       </div>
     </a>
   <% end %>
 </div>
 
-<%= form_tag '/collections', method: :post do |f| %>
-  <%= label_tag :title %>
-  <%= text_field_tag :title %>
-  <%= submit_tag 'Save' %>
-<% end %>
