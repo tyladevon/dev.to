@@ -21,10 +21,10 @@
   <h1>Collections</h1>
 
   <form action="/collections" method="POST" class='new-collection-container' >
-    <label for="title">Create Collection</label><br>
+    <label className="create-collection-form-heading" for="title">Create Collection</label><br>
     <input type="text" id="title" name="title" class='new-collection-input' placeholder='name of collection...'> <br>
     <input type="submit" value="Save" class='new-collection-button'>
-  </form> 
+  </form>
 
   <br>
   <br>
@@ -32,9 +32,8 @@
   <% @collections.each do |collection| %>
     <a class='item' href="/collections/<%= collection.id %>">
       <div class="item-title">
-        <ul> <%= collection.title  %> </ul>
+        <ul class='collection-title'> <%= collection.title  %> </ul>
       </div>
     </a>
   <% end %>
 </div>
-
