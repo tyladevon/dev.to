@@ -13,9 +13,9 @@ RSpec.describe "Api::V0::UserCollectionsController", type: :request do
       get '/api/user_collections', params: { user_id: @user.id }
 
       expect(response).to be_successful
-
+      
       collections = JSON.parse(response.body)['collections']
-      expect(collections.count).to eq(3)
+      expect(collections.count).to eq(4)
     end
   end
 end
