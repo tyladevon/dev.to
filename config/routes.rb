@@ -103,6 +103,7 @@ Rails.application.routes.draw do
           get "me(/:status)", to: "articles#me", as: :me, constraints: { status: /published|unpublished|all/ }
         end
       end
+      resources :user_collections, only: [:index]
       resources :comments, only: %i[index show]
       resources :chat_channels, only: [:show]
       resources :videos, only: [:index]
