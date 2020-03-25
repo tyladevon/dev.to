@@ -18,8 +18,7 @@ export const ItemListItem = ({ item, children }) => {
   return (
     <div className="item-wrapper">
       <a className="item" href={adaptedItem.path}>
-        <div className="item-title">{adaptedItem.title}</div>
-
+        <h3 className="item-title">{adaptedItem.title}</h3>
         <div className="item-details">
           <a className="item-user" href={`/${adaptedItem.user.username}`}>
             <img src={adaptedItem.user.profile_image_90} alt="Profile Pic" />
