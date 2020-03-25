@@ -1,32 +1,32 @@
 import { h, Component } from 'preact';
 import PropTypes from 'prop-types';
 import { articlePropTypes } from '../../src/components/common-prop-types';
+
 export class SaveButton extends Component {
   constructor() {
     super();
     this.state =
-      { collectionDropbox: 'all articles' }
+      {
+        collectionDropboxValue: 'all articles',
+        allCollectionTitles: []
+      }
   }
 
   componentDidMount() {
-      fetch('http://localhost:3000/api/user_collections')
-        .then(response => response.json())
-        .then(data => {
-          this.setState({creatures: data})
-        })
-        .catch(error => window.alert(`Opps! Something went wrong! ${error}`))
-
-
+    fetch('http://localhost:3000/api/user_collections')
+      .then(response => response.json())
+      .then(data => {
+        this.setState({ allCollectionTitles: data.collections })
+      })
+      .catch(error => window.alert(`Opps! Something went wrong! ${error.message}`))
     const { isBookmarked } = this.props;
     this.setState({ buttonText: isBookmarked ? 'SAVED' : 'SAVE!' });
   }
 
   updateDropboxState = collectionName => {
-    this.setState({collectionDropbox: collectionName});
+    this.setState({collectionDropboxValue: collectionName});
   }
 
-  // collectionTitles variable will represent an array of all collection titles
-  // this.state.collectionDropbox references current selected collection title
   render() {
     const { buttonText } = this.state;
     const { article, isBookmarked, onClick } = this.props;
@@ -38,17 +38,17 @@ export class SaveButton extends Component {
         this.setState({ buttonText: 'UNSAVE' });
       }
     };
-    let collectionTitles = ['for fun', 'weekend reads', 'save for mom']
-    let printCollectionTitles = collectionTitles.map(title => {
+
+    let printCollectionTitles = this.state.allCollectionTitles.map(title => {
       return <option value={title}>{title}</option>
     })
+
     if (article.class_name === 'Article') {
       return (
         <div className='save-to-collection-button-container'>
             <div className='collection-dropdown-container'>
               <label className='collection-dropdown-heading'>collection:</label>
               <select className='collection-dropbox' onChange={e => this.updateDropboxState(e.target.value)}>
-                <option value='all articles'>all articles</option>
                 {printCollectionTitles}
               </select>
             </div>
