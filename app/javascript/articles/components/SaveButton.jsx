@@ -13,7 +13,7 @@ export class SaveButton extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/api/user_collections')
+    fetch('http://localhost:3000/api/user_collections',  {credentials: 'include'})
       .then(response => response.json())
       .then(data => {
         this.setState({ allCollectionTitles: data.collections })
