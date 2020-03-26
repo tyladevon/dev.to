@@ -21,13 +21,21 @@
   <h1>Collections</h1>
 
   <form action="/collections" method="POST" class='new-collection-container' >
-    <label className="create-collection-form-heading" for="title">Create Collection</label><br>
-    <input type="text" id="title" name="title" class='new-collection-input' placeholder='name of collection...'> <br>
-    <input type="submit" value="Save" class='new-collection-button'>
+    <label class="create-collection-form-heading" for="title">Create Collection</label><br>
+    <input type="text" id="title" name="title" maxlength='20' class='new-collection-input' placeholder='name of collection...'> <br>
+    <button type="submit" disabled value="Save" class='new-collection-button'>save</button>
   </form>
 
-  <br>
-  <br>
+  <script type="text/javascript" defer>
+    const validateInputs = () => {
+      if (document.querySelector('.new-collection-input').value !== '') {
+        document.querySelector('.new-collection-button').disabled = false;
+      } else if (document.querySelector('.new-collection-input').value === '') {
+        document.querySelector('.new-collection-button').disabled = true;
+      }
+    }
+    document.querySelector('.new-collection-input').addEventListener('keyup', validateInputs);
+  </script>
 
   <% @collections.each do |collection| %>
     <a class='item' href="/collections/<%= collection.id %>">
