@@ -8,11 +8,11 @@ exports[`<ItemListItem /> renders properly with a history item 1`] = `
     class="item"
     href="/article"
   >
-    <div
+    <h3
       class="item-title"
     >
       Title
-    </div>
+    </h3>
     <div
       class="item-details"
     >
@@ -49,11 +49,11 @@ exports[`<ItemListItem /> renders properly with a readinglist item 1`] = `
     class="item"
     href="/article"
   >
-    <div
+    <h3
       class="item-title"
     >
       Title
-    </div>
+    </h3>
     <div
       class="item-details"
     >
