@@ -7,7 +7,7 @@ export class SaveButton extends Component {
     super();
     this.state =
       {
-        collectionDropboxValue: 'all articles',
+        collectionDropboxValue: 'Default Collection',
         allCollectionTitles: []
       }
   }
@@ -58,6 +58,7 @@ export class SaveButton extends Component {
               isBookmarked ? 'selected' : ''
             }`}
             data-initial-feed
+            data-collection={this.state.collectionDropboxValue}
             data-reactable-id={article.id}
             onClick={onClick}
             onMouseOver={mouseOver}
