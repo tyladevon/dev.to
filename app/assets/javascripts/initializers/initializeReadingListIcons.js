@@ -102,6 +102,7 @@ function buttonFormData(button) {
   var formData = new FormData();
   formData.append('reactable_type', 'Article');
   formData.append('reactable_id', button.dataset.reactableId);
+  formData.append('collection', button.dataset.collection);
   formData.append('category', 'readinglist');
   return formData;
 }
