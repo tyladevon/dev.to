@@ -7,13 +7,21 @@ export class SaveButton extends Component {
     super();
     this.state =
       {
+<<<<<<< HEAD
         collectionDropboxValue: 'all articles',
+=======
+        collectionDropboxValue: 'Default Collection',
+>>>>>>> f36496e9d84c137b6dac79ebce65a3f00ffdbff4
         allCollectionTitles: []
       }
   }
 
   componentDidMount() {
+<<<<<<< HEAD
     fetch('http://localhost:3000/api/user_collections')
+=======
+    fetch('http://localhost:3000/api/user_collections',  {credentials: 'include'})
+>>>>>>> f36496e9d84c137b6dac79ebce65a3f00ffdbff4
       .then(response => response.json())
       .then(data => {
         this.setState({ allCollectionTitles: data.collections })
@@ -58,6 +66,10 @@ export class SaveButton extends Component {
               isBookmarked ? 'selected' : ''
             }`}
             data-initial-feed
+<<<<<<< HEAD
+=======
+            data-collection={this.state.collectionDropboxValue}
+>>>>>>> f36496e9d84c137b6dac79ebce65a3f00ffdbff4
             data-reactable-id={article.id}
             onClick={onClick}
             onMouseOver={mouseOver}
