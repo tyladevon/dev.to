@@ -1,8 +1,12 @@
 class CollectionsController < ApplicationController
   skip_forgery_protection
-  
+
   def index
-    @collections = UserCollection.where(user_id: session_current_user_id)
+    if session_current_user_id
+      @collections = UserCollection.where(user_id: session_current_user_id)
+    else
+      @collections = false
+    end
   end
   
   def show
