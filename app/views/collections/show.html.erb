@@ -18,7 +18,7 @@
   <h1><%= @collection.title %></h1>
   <% @collection.articles.each do |article| %>
     <a class='item' href=" <%= article.path %> ">
-      <div class="item-title">
+      <div class="item-title article-title-heading">
         <%= article.title  %>
       </div>
     </a>

@@ -524,3 +524,69 @@
     @include themeable(color, theme-container-color, rgba($black, 0.7));
   }
 }
+
+.save-to-collection-button-container {
+  height: 90px;
+  width: 98%;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.collection-dropdown-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.collection-dropdown-heading {
+  color: #0d36ff;
+  font-size: 70%;
+  margin-bottom: 5px;
+}
+
+.article-title-heading {
+  margin: 1%;
+  border: 1px solid #000;
+  padding: 1%;
+  width: 30%;
+}
+
+.article-title-heading:hover,
+.collection-title:hover {
+  transform: scale(1.02);
+  transition: transform .5s;
+}
+
+.new-collection-container {
+  height: auto;
+  width: 300px;
+  background-color: #f0f1f2;
+  border: 1px solid #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.new-collection-button {
+  height: 30px;
+  width: 30%;
+  margin: -5px 0px 10px 0px;
+}
+
+.create-collection-form-heading {
+  margin: 10px 0px 0px 0px;
+}
+
+.new-collection-input {
+  width: 88% !important;
+  height: 20px;
+  padding-left: 3%;
+}
+
+.collection-title {
+  background-color: #f0f1f2;
+  width: 20%;
+  padding: 1%;
+  border: 1px solid #000;
+  margin-left: 10px;
+}

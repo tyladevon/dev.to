@@ -30,7 +30,7 @@ function sendFetch(switchStatement, body) {
       });
     case 'reaction-creation':
       return fetchCallback({
-        url: '/reactions',
+        url: '/add_articles',
         addTokenToBody: true,
         body,
       });

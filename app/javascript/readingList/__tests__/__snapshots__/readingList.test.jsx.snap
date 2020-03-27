@@ -20,8 +20,36 @@ exports[`<ReadingList /> renders properly 1`] = `
         <h4
           class="filters-header-text"
         >
-          my tags
+          My Collections
         </h4>
+        All Articles
+        <section
+          class="new-collection-container"
+        >
+          <p
+            class="new-collection-heading"
+          >
+            Create a New Collection
+          </p>
+          <input
+            class="new-collection-input"
+            onChange={[Function]}
+            placeholder="name of collection..."
+            type="text"
+            value=""
+          />
+          <button
+            class="new-collection-button"
+            onClick={[Function]}
+          >
+            save
+          </button>
+        </section>
+        <button
+          onClick={[Function]}
+        >
+          LOG HEADINGS
+        </button>
       </div>
       <div
         class="tags"
