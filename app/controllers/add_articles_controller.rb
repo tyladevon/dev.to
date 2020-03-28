@@ -5,7 +5,10 @@ class AddArticlesController < ApplicationController
         collection = UserCollection.create(title: "Default Collection", user_id: session_current_user_id)
       end
       article = Article.find(params[:reactable_id])
-      collection.articles << article
-      return
+      if collection.articles.include?(article)
+        return
+      else
+        collection.articles << article
+      end
     end
 end
