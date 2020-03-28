@@ -3,7 +3,9 @@ module Api
     class UserCollectionsController < ApiController
       def index
         collections = UserCollection.where(user_id: session_current_user_id).pluck(:title)
-        #collections.prepend("Default Collection")
+        if !collections.include?("Default Collection")
+          collections.prepend("Default Collection")
+        end
         render json: { collections: collections }
       end
     end
