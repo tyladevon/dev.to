@@ -4,8 +4,6 @@ class CreateUserCollections < ActiveRecord::Migration[5.2]
       t.string :title
       t.references :user, foreign_key: true
       t.timestamps
-
-      add_index(:user_collections, :user)
     end
   end
 end
