@@ -19,7 +19,8 @@
   <% @collection.articles.each do |article| %>
     <a class='item' href=" <%= article.path %> ">
       <div class="item-title article-title-heading">
-        <%= article.title  %>
+        <%= article.title  %><br>
+        <p><%= article.read_status(@collection.id) %></p>
       </div>
     </a>
   <% end %>

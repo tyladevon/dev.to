@@ -404,6 +404,10 @@ class Article < ApplicationRecord
                    spaminess_rating: BlackBox.calculate_spaminess(self))
   end
 
+  def read_status(collection_id)
+    ArticleCollection.where(user_collection_id: collection_id).where(article_id: self.id).pluck(:status).first
+  end
+
   private
 
   def delete_related_objects
