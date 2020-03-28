@@ -4,6 +4,7 @@ import { articlePropTypes } from '../../src/components/common-prop-types';
 import { fetchUserCollections } from './saveButtonAPICalls';
 
 export class SaveButton extends Component {
+
   constructor() {
     super();
     this.state = {
