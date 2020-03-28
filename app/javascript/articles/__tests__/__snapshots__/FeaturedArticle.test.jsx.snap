@@ -174,6 +174,7 @@ exports[`<FeaturedArticle /> component should render a bookmarked featured artic
         data-initial-feed={true}
         data-reactable-id={62407}
         onBlur={[Function]}
+        onClick={[Function]}
         onFocus={[Function]}
         onMouseOver={[Function]}
         onMouseout={[Function]}
@@ -362,6 +363,7 @@ exports[`<FeaturedArticle /> component should render a standard article 1`] = `
         data-initial-feed={true}
         data-reactable-id={62407}
         onBlur={[Function]}
+        onClick={[Function]}
         onFocus={[Function]}
         onMouseOver={[Function]}
         onMouseout={[Function]}
