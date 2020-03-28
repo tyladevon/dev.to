@@ -405,8 +405,8 @@ Rails.application.routes.draw do
   get "/:username/comment/:id_code/mod" => "moderations#comment"
   get "/:username/comment/:id_code/settings", to: "comments#settings"
 
-  #get "/:username/:slug/:view" => "stories#show",
-      #:constraints => { view: /moderate/ }
+  get "/:username/:slug/:view" => "stories#show",
+      :constraints => { view: /moderate/ }
   get "/:username/:slug/mod" => "moderations#article"
   get "/:username/:slug/manage" => "articles#manage"
   get "/:username/:slug/edit" => "articles#edit"
