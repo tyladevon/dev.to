@@ -19,7 +19,7 @@ export class SaveButton extends Component {
         this.setState({ allCollectionTitles: collectionData.collections })
       })
     const { isBookmarked } = this.props;
-    this.setState({ buttonText: this.state.hasBeenSaved ? 'SAVED' : 'SAVE!' });
+    this.setState({ buttonText: isBookmarked ? 'SAVED' : 'SAVE!' });
   }
 
   updateDropboxState = collectionName => {
@@ -34,7 +34,7 @@ export class SaveButton extends Component {
     const { buttonText } = this.state;
     const { article, isBookmarked, onClick } = this.props;
     const mouseOut = _e => {
-      this.setState({ buttonText: this.state.hasBeenSaved ? 'SAVED' : 'SAVE' });
+      this.setState({ buttonText: isBookmarked ? 'SAVED' : 'SAVE' });
     };
     const mouseOver = _e => {
       if (isBookmarked) {
@@ -64,7 +64,6 @@ export class SaveButton extends Component {
             data-collection={this.state.collectionDropboxValue}
             data-reactable-id={article.id}
             onClick={onClick}
-            onClick={() => this.updateHasBeenSaved()}
             onMouseOver={mouseOver}
             onFocus={mouseOver}
             onMouseout={mouseOut}
