@@ -1,7 +1,62 @@
+# Turing mod4 brownfield Dev.to Group Project 👩‍💻👨‍💻
+<i>a challenge to implement new features into an existing, open-source codebase</i>
+
+#### Introduction
+
+This was our first project (team of 3) in mod4 at Turing School of Software and Design. The challenge was to familiarize ourselves with a pre-existing codebase and implement a new features into the web app. The backend of the app is built with `Ruby on Rails` and the frontend is built with `Preact`. For our team, this was the first time we had explored a web app that included code for the FE and BE. We had to work together leveraging our specialized skills pertaining to either Ruby/Rails or JavaScript to create the final product. Each piece of additional functionality is thoroughly tested on the BE using `RSpec`/`Capybara` and the FE using `Jest`/`Enzyme`.
+
+#### Project Goal / User Story (Artisanal Collections Track)
+I don’t have time and energy to read these articles every day, but I’d like to catch up with the best recent content.
+
+Thankfully, I have you. And you love cultivating content. You login to the app and create a new “collection” with a name like “Best JS of February”. Now when you are reading articles in the app there is a [+] button that, when clicked, gives you the option to add that article to a collection.
+
+The collection has a publicly-sharable URL, so that you can tweet it out, I can click the link, and see a listing page of all the articles in the collection.
+
+#### What We Accomplished
+
+Our team was able to successfully complete all functionality required for our specific track. Below are details about each piece that functionality.
+
+- A drop-down menu was created for each article for a logged-in user's news feed. This menu contains a list of each collection that user has created.
+
+- If a user has not yet created any collections, a "Default Collection" if created upon clicking the `SAVE` button.
+
+- When a user clicks the `SAVE` button on an article, that article is saved to the currently selected collection in the drop-down menu of that article.
+
+- If a user clicks their avatar icon in the top right of the screen, a drop-down menu appears that includes a "Collections" button we created.
+
+- Upon selecting the "Collections" button, a user is redirected to a new page displaying all of the collections that user has created, as well as a form to create a new collection. If that user is not currently logged in, they will see a message directing them to login in order to view collections.
+
+- From the Collections view, a user can click on a specific collection they have created to be redirected to a new page displaying links to all the articles within that collection.
+
+- The URL for this page is unique to each collection. This allows a user to share this URL with another user, enabling them to share their collection containing a list of articles associated with it.
+
+- The listed articles within a collection are displayed as links. When any of these links are clicked, the user will be redirected to the full page of that article.
+
+#### Screenshots of Our Additions
+
+![screenshot 1](https://user-images.githubusercontent.com/53405028/77832133-5b59c980-70f9-11ea-9894-211776fec8dc.png)
+
+![screenshot 2](https://user-images.githubusercontent.com/53405028/77832157-87754a80-70f9-11ea-882d-b91795d2c205.png)
+
+![screenshot 3](https://user-images.githubusercontent.com/53405028/77832167-99ef8400-70f9-11ea-9f3b-6277001fb589.png)
+
+#### How to Install
+[click here for installation documentation](#installation-documentation)
+
+#### Team Members:
+Zachary Nemeroff https://github.com/ZaneMeroff<br>
+Harrison Levin https://github.com/hale4029<br>
+Tyla Devon https://github.com/tyladevon
+
+
+# Below is the original README by Dev.to
+<hr>
+
 <div align="center">
   <br>
   <img alt="DEV" src="https://thepracticaldev.s3.amazonaws.com/i/ro3538by3b2fupbs63sr.png" width="500px">
   <h1>DEV Community 👩‍💻👨‍💻</h1>
+
   <strong>The Human Layer of the Stack</strong>
 </div>
 <br>
