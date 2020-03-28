@@ -1,30 +1,34 @@
 import { h, Component } from 'preact';
 import PropTypes from 'prop-types';
 import { articlePropTypes } from '../../src/components/common-prop-types';
+import { fetchUserCollections } from './saveButtonAPICalls';
 
 export class SaveButton extends Component {
+
   constructor() {
     super();
-    this.state =
-      {
-        collectionDropboxValue: 'Default Collection',
-        allCollectionTitles: []
-      }
+    this.state = {
+      collectionDropboxValue: 'Default Collection',
+      allCollectionTitles: [],
+      hasBeenSaved: false
+    }
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/api/user_collections',  {credentials: 'include'})
-      .then(response => response.json())
-      .then(data => {
-        this.setState({ allCollectionTitles: data.collections })
+    fetchUserCollections()
+      .then(collectionData => {
+        this.setState({ allCollectionTitles: collectionData.collections })
       })
-      .catch(error => window.alert(`Opps! Something went wrong! ${error.message}`))
     const { isBookmarked } = this.props;
     this.setState({ buttonText: isBookmarked ? 'SAVED' : 'SAVE!' });
   }
 
   updateDropboxState = collectionName => {
     this.setState({collectionDropboxValue: collectionName});
+  }
+
+  updateHasBeenSaved = () => {
+    this.setState({hasBeenSaved: true})
   }
 
   render() {
