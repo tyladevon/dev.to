@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_28_163110) do
+
+ActiveRecord::Schema.define(version: 2020_03_28_182312) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +52,7 @@ ActiveRecord::Schema.define(version: 2020_03_28_163110) do
   create_table "article_collections", force: :cascade do |t|
     t.bigint "article_id"
     t.datetime "created_at", null: false
+    t.string "status", default: "Unread"
     t.datetime "updated_at", null: false
     t.bigint "user_collection_id"
     t.index ["article_id"], name: "index_article_collections_on_article_id"

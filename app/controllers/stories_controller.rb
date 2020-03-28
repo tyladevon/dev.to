@@ -36,6 +36,9 @@ class StoriesController < ApplicationController
   def show
     @story_show = true
     if (@article = Article.find_by(path: "/#{params[:username].downcase}/#{params[:slug]}")&.decorate)
+      article_id = Article.find_by(path: "/#{params[:username].downcase}/#{params[:slug]}")
+      collection_ids = UserCollection.where(user_id: session_current_user_id).pluck(:id)
+      ArticleCollection.where(user_collection_id: collection_ids).where(article_id: article_id.id).update_all(status: "Read")
       handle_article_show
     elsif (@article = Article.find_by(slug: params[:slug])&.decorate)
       handle_possible_redirect
