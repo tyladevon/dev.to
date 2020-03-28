@@ -1,37 +1,40 @@
 import { h, Component } from 'preact';
 import PropTypes from 'prop-types';
 import { articlePropTypes } from '../../src/components/common-prop-types';
+import { fetchUserCollections } from './saveButtonAPICalls';
 
 export class SaveButton extends Component {
   constructor() {
     super();
-    this.state =
-      {
-        collectionDropboxValue: 'Default Collection',
-        allCollectionTitles: []
-      }
+    this.state = {
+      collectionDropboxValue: 'Default Collection',
+      allCollectionTitles: [],
+      hasBeenSaved: false
+    }
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/api/user_collections',  {credentials: 'include'})
-      .then(response => response.json())
-      .then(data => {
-        this.setState({ allCollectionTitles: data.collections })
+    fetchUserCollections()
+      .then(collectionData => {
+        this.setState({ allCollectionTitles: collectionData.collections })
       })
-      .catch(error => window.alert(`Opps! Something went wrong! ${error.message}`))
     const { isBookmarked } = this.props;
-    this.setState({ buttonText: isBookmarked ? 'SAVED' : 'SAVE!' });
+    this.setState({ buttonText: this.state.hasBeenSaved ? 'SAVED' : 'SAVE!' });
   }
 
   updateDropboxState = collectionName => {
     this.setState({collectionDropboxValue: collectionName});
   }
 
+  updateHasBeenSaved = () => {
+    this.setState({hasBeenSaved: true})
+  }
+
   render() {
     const { buttonText } = this.state;
     const { article, isBookmarked, onClick } = this.props;
     const mouseOut = _e => {
-      this.setState({ buttonText: isBookmarked ? 'SAVED' : 'SAVE' });
+      this.setState({ buttonText: this.state.hasBeenSaved ? 'SAVED' : 'SAVE' });
     };
     const mouseOver = _e => {
       if (isBookmarked) {
@@ -61,6 +64,7 @@ export class SaveButton extends Component {
             data-collection={this.state.collectionDropboxValue}
             data-reactable-id={article.id}
             onClick={onClick}
+            onClick={() => this.updateHasBeenSaved()}
             onMouseOver={mouseOver}
             onFocus={mouseOver}
             onMouseout={mouseOut}
